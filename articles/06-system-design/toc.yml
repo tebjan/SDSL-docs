@@ -1,0 +1,11 @@
+### YamlMime:TableOfContent
+- name: Shader Systems
+  href: shader-systems.md
+- name: When to Split
+  href: when-to-split.md
+- name: Shared Base
+  href: shared-base.md
+- name: Multi-Pass
+  href: multi-pass.md
+- name: File Organization
+  href: file-organization.md

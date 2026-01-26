@@ -24,7 +24,8 @@
         ],
         "exclude": [
           "_site/**",
-          "obj/**"
+          "obj/**",
+          "temp conversation download to integrate/**"
         ]
       }
     ],
@@ -48,7 +49,7 @@
     "globalMetadata": {
       "_appTitle": "SDSL Documentation",
       "_appName": "SDSL Docs",
-      "_appFooter": "SDSL - The most elegant shading language",
+      "_appFooter": "SDSL - Object-oriented shaders for Stride and vvvv",
       "_enableSearch": true,
       "_enableNewTab": true,
       "_disableContribution": false,

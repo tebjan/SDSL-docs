@@ -5,6 +5,9 @@ api/
 .manifest
 .publish
 
+# Temp content folder
+temp conversation download to integrate/
+
 # OS files
 .DS_Store
 Thumbs.db

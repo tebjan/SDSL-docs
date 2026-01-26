@@ -4,7 +4,7 @@ A quick and fun way to learn SDSL, the most elegant shading language known to ma
 
 ## 📚 Documentation
 
-The documentation is built with [DocFX](https://dotfx.github.io/) and automatically deployed to GitHub Pages.
+The documentation is built with [DocFX](https://dotnet.github.io/docfx/) and automatically deployed to GitHub Pages.
 
 **[View the Documentation](https://tebjan.github.io/SDSL-docs/)**
 

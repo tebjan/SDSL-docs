@@ -1,0 +1,17 @@
+# DocFX build outputs
+_site/
+obj/
+api/
+.manifest
+.publish
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

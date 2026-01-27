@@ -27,21 +27,21 @@ Position from `PositionStream4`. Matrices from `Transformation`. UVs from `Textu
 
 **New to SDSL?** Start here:
 
-1. [Setup](articles/00-setup/tools.md) - Install the tools
-2. [Why SDSL?](articles/01-why-sdsl/the-problem.md) - The motivation
-3. [Core Concepts](articles/02-core-concepts/streams.md) - Fundamentals
-4. [First Shaders](articles/04-first-shaders/texturefx.md) - Working examples
+1. [Setup](manual/00-setup/tools.md) - Install the tools
+2. [Why SDSL?](manual/01-why-sdsl/the-problem.md) - The motivation
+3. [Core Concepts](manual/02-core-concepts/streams.md) - Fundamentals
+4. [First Shaders](manual/04-first-shaders/texturefx.md) - Working examples
 
 **Building systems?**
 
-- [Setup & Workflow](articles/03-setup-workflow-vvvv/file-rules.md) - File locations, reload behavior
-- [Discovery](articles/05-discovery/the-problem.md) - Finding available shaders
-- [System Design](articles/06-system-design/shader-systems.md) - Multi-shader patterns
+- [Setup & Workflow](manual/03-setup-workflow-vvvv/file-rules.md) - File locations, reload behavior
+- [Discovery](manual/05-discovery/the-problem.md) - Finding available shaders
+- [System Design](manual/06-system-design/shader-systems.md) - Multi-shader patterns
 
 **Reference:**
 
-- [Patterns](articles/07-patterns/instancing.md) - Common recipes
-- [Appendix](articles/appendix/cheatsheet.md) - Quick lookups
+- [Patterns](manual/07-patterns/instancing.md) - Common recipes
+- [Appendix](manual/appendix/cheatsheet.md) - Quick lookups
 
 ---
 
@@ -49,67 +49,67 @@ Position from `PositionStream4`. Matrices from `Transformation`. UVs from `Textu
 
 ### Setup
 
-- [Tools & Setup](articles/00-setup/tools.md)
+- [Tools & Setup](manual/00-setup/tools.md)
 
 ### Why SDSL
 
-- [The Problem](articles/01-why-sdsl/the-problem.md) - HLSL boilerplate
-- [The Solution](articles/01-why-sdsl/the-solution.md) - Inheritance
-- [The Payoff](articles/01-why-sdsl/the-payoff.md) - System design benefits
-- [Two Tracks](articles/01-why-sdsl/two-tracks.md) - vvvv vs Stride workflows
+- [The Problem](manual/01-why-sdsl/the-problem.md) - HLSL boilerplate
+- [The Solution](manual/01-why-sdsl/the-solution.md) - Inheritance
+- [The Payoff](manual/01-why-sdsl/the-payoff.md) - System design benefits
+- [Two Tracks](manual/01-why-sdsl/two-tracks.md) - vvvv vs Stride workflows
 
 ### Core Concepts
 
-- [Streams](articles/02-core-concepts/streams.md) - Data flow between stages
-- [Inheritance](articles/02-core-concepts/inheritance.md) - Multiple parents, override
-- [Composition](articles/02-core-concepts/composition.md) - Pluggable shader slots
-- [Keywords](articles/02-core-concepts/keywords.md) - `stage`, `stream`, `compose`, `override`
+- [Streams](manual/02-core-concepts/streams.md) - Data flow between stages
+- [Inheritance](manual/02-core-concepts/inheritance.md) - Multiple parents, override
+- [Composition](manual/02-core-concepts/composition.md) - Pluggable shader slots
+- [Keywords](manual/02-core-concepts/keywords.md) - `stage`, `stream`, `compose`, `override`
 
 ### Setup & Workflow [vvvv]
 
-- [File Rules](articles/03-setup-workflow-vvvv/file-rules.md) - Where files go
-- [Reload Behavior](articles/03-setup-workflow-vvvv/reload-behavior.md) - Hot reload quirks
-- [Finding Errors](articles/03-setup-workflow-vvvv/finding-errors.md) - Where to look
+- [File Rules](manual/03-setup-workflow-vvvv/file-rules.md) - Where files go
+- [Reload Behavior](manual/03-setup-workflow-vvvv/reload-behavior.md) - Hot reload quirks
+- [Finding Errors](manual/03-setup-workflow-vvvv/finding-errors.md) - Where to look
 
 ### Setup & Workflow [Stride]
 
-- [Overview](articles/03-setup-workflow-stride/overview.md) - Key differences
+- [Overview](manual/03-setup-workflow-stride/overview.md) - Key differences
 
 ### First Shaders
 
-- [TextureFX](articles/04-first-shaders/texturefx.md) - Image effects
-- [ComputeFX](articles/04-first-shaders/computefx.md) - GPU compute
-- [DrawFX](articles/04-first-shaders/drawfx.md) - Geometry rendering
-- [Geometry Shaders](articles/04-first-shaders/geometry-shaders.md) - GSMain
-- [ShaderFX](articles/04-first-shaders/shaderfx.md) - Material building blocks
+- [TextureFX](manual/04-first-shaders/texturefx.md) - Image effects
+- [ComputeFX](manual/04-first-shaders/computefx.md) - GPU compute
+- [DrawFX](manual/04-first-shaders/drawfx.md) - Geometry rendering
+- [Geometry Shaders](manual/04-first-shaders/geometry-shaders.md) - GSMain
+- [ShaderFX](manual/04-first-shaders/shaderfx.md) - Material building blocks
 
 ### Discovery
 
-- [The Discovery Problem](articles/05-discovery/the-problem.md)
-- [Shader Explorer](articles/05-discovery/shader-explorer.md)
-- [Common Searches](articles/05-discovery/common-searches.md)
+- [The Discovery Problem](manual/05-discovery/the-problem.md)
+- [Shader Explorer](manual/05-discovery/shader-explorer.md)
+- [Common Searches](manual/05-discovery/common-searches.md)
 
 ### System Design
 
-- [Shader Systems](articles/06-system-design/shader-systems.md) - Particle & trail patterns
-- [When to Split](articles/06-system-design/when-to-split.md) - One shader or many?
-- [Shared Base](articles/06-system-design/shared-base.md) - Type definitions
-- [Multi-Pass](articles/06-system-design/multi-pass.md) - Compute pipelines
-- [File Organization](articles/06-system-design/file-organization.md) - Project structure
+- [Shader Systems](manual/06-system-design/shader-systems.md) - Particle & trail patterns
+- [When to Split](manual/06-system-design/when-to-split.md) - One shader or many?
+- [Shared Base](manual/06-system-design/shared-base.md) - Type definitions
+- [Multi-Pass](manual/06-system-design/multi-pass.md) - Compute pipelines
+- [File Organization](manual/06-system-design/file-organization.md) - Project structure
 
 ### Patterns
 
-- [Instancing](articles/07-patterns/instancing.md)
+- [Instancing](manual/07-patterns/instancing.md)
 
 ### Porting
 
-- [HLSL to SDSL](articles/08-porting/hlsl-to-sdsl.md)
+- [HLSL to SDSL](manual/08-porting/hlsl-to-sdsl.md)
 
 ### Appendix
 
-- [Cheatsheet](articles/appendix/cheatsheet.md)
-- [Base Shaders](articles/appendix/base-shaders.md)
-- [Common Errors](articles/appendix/errors.md)
+- [Cheatsheet](manual/appendix/cheatsheet.md)
+- [Base Shaders](manual/appendix/base-shaders.md)
+- [Common Errors](manual/appendix/errors.md)
 
 ---
 

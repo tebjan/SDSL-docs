@@ -32,7 +32,8 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "media/**"
         ]
       }
     ],
@@ -41,7 +42,8 @@
     "fileMetadataFiles": [],
     "template": [
       "default",
-      "modern"
+      "modern",
+      "template"
     ],
     "postProcessors": [],
     "keepFileLink": false,
@@ -49,6 +51,8 @@
     "globalMetadata": {
       "_appTitle": "SDSL Documentation",
       "_appName": "SDSL Docs",
+      "_appLogoPath": "media/sdsl-logo.svg",
+      "_appFaviconPath": "media/favicon.svg",
       "_appFooter": "SDSL - Object-oriented shaders for Stride and vvvv",
       "_enableSearch": true,
       "_enableNewTab": true,

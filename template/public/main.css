@@ -1,0 +1,106 @@
+/* Logo sizing */
+.navbar-brand #logo {
+  width: 120px;
+  height: 36px;
+}
+
+/* HLSL/SDSL Syntax Highlighting - VS Code Dark Theme Standard */
+
+/* Keywords (if, for, return, struct, shader) - Blue (VS Code standard) */
+.hljs-keyword {
+  color: #569CD6 !important;
+}
+
+/* Types (float4, int, Texture2D) - Teal */
+.hljs-type {
+  color: #4EC9B0 !important;
+}
+
+/* Built-in functions (sin, cos, mul, lerp) - Yellow */
+.hljs-built_in {
+  color: #DCDCAA !important;
+}
+
+/* Literals (true, false, NULL) - Blue */
+.hljs-literal {
+  color: #569CD6 !important;
+}
+
+/* Numbers - Light Green */
+.hljs-number {
+  color: #B5CEA8 !important;
+}
+
+/* Strings - Orange */
+.hljs-string {
+  color: #CE9178 !important;
+}
+
+/* Comments - Green */
+.hljs-comment {
+  color: #6A9955 !important;
+  font-style: italic;
+}
+
+/* Preprocessor (#define, #include) - Purple */
+.hljs-meta {
+  color: #C586C0 !important;
+}
+.hljs-meta .hljs-keyword {
+  color: #569CD6 !important;
+}
+.hljs-meta .hljs-string {
+  color: #CE9178 !important;
+}
+
+/* Semantics (SV_Position, TEXCOORD) - Gold */
+.hljs-symbol {
+  color: #D7BA7D !important;
+}
+
+/* Function names - Yellow */
+.hljs-title.function_,
+.hljs-title.function {
+  color: #DCDCAA !important;
+}
+
+/* SDSL-specific keywords (shader, stage, stream, compose, override) - Pink (same saturation as blue) */
+.hljs-variable.language_ {
+  color: #D6699B !important;
+}
+
+/* Light Theme Overrides - VS Code Light Theme Colors */
+[data-bs-theme=light] .hljs-keyword {
+  color: #0000FF !important;
+}
+[data-bs-theme=light] .hljs-type {
+  color: #267F99 !important;
+}
+[data-bs-theme=light] .hljs-built_in {
+  color: #795E26 !important;
+}
+[data-bs-theme=light] .hljs-literal {
+  color: #0000FF !important;
+}
+[data-bs-theme=light] .hljs-number {
+  color: #098658 !important;
+}
+[data-bs-theme=light] .hljs-string {
+  color: #A31515 !important;
+}
+[data-bs-theme=light] .hljs-comment {
+  color: #008000 !important;
+}
+[data-bs-theme=light] .hljs-meta {
+  color: #AF00DB !important;
+}
+[data-bs-theme=light] .hljs-symbol {
+  color: #811F3F !important;
+}
+[data-bs-theme=light] .hljs-title.function_,
+[data-bs-theme=light] .hljs-title.function {
+  color: #795E26 !important;
+}
+[data-bs-theme=light] .hljs-variable.language_ {
+  color: #AF00DB !important;
+}

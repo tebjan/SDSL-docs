@@ -22,15 +22,15 @@ Stride uses its asset system. Shaders are compiled during build.
 
 ---
 
-## Build Cycle
+## Hot Reload
 
-Unlike vvvv's hot reload:
+Game Studio automatically reloads project shaders on file save:
 
-1. Edit shader
-2. Build project (F5 or Ctrl+Shift+B)
-3. Changes appear
+1. Edit shader in your editor
+2. Save the file
+3. Game Studio detects the change and recompiles
 
-No hot reload. Full build required for shader changes.
+The game runtime also hot reloads shaders when they are file-based on disc. This works in both the editor and running game.
 
 ---
 
@@ -122,7 +122,7 @@ See the [Stride documentation](https://doc.stride3d.net/latest/en/manual/graphic
 | Aspect | vvvv | Stride |
 |--------|------|--------|
 | Shader location | `shaders/` next to .vl | `Assets/Effects/` |
-| Reload | Hot (on save) | Cold (on build) |
+| Reload | Hot (on save) | Hot (on save) |
 | Node creation | Suffix-based | C# registration |
 | Parameter binding | Automatic pins | ParameterKey in C# |
 | Error display | Console/TTY | Visual Studio |

@@ -1,6 +1,26 @@
 # Shader Systems
 
-> Real patterns from vvvv's official GPU particle and trail examples.
+> Real patterns from production systems. Examples from vvvv's official help patches.
+
+These patterns work in both Stride and vvvv. The examples use vvvv naming conventions (`_ComputeFX`, `_DrawFX`, etc.) but the SDSL code is identical — just the file naming differs.
+
+---
+
+## Two Approaches: Material Extension vs Custom Draw
+
+SDSL supports two rendering approaches:
+
+**1. Material Extension (recommended)**
+- Extend Stride's material system via `ComputeColor` shaders
+- Use standard rendering with per-instance data from buffers
+- Benefits: lighting, shadows, LOD all work automatically
+
+**2. Custom Draw Shaders**
+- Full control via geometry shaders
+- Custom billboard, impostor, or procedural geometry
+- Benefits: maximum flexibility, non-standard rendering
+
+You can combine both: use compute shaders for simulation, then choose either approach for rendering.
 
 ---
 
@@ -201,6 +221,44 @@ shader ColorPerParticle_ShaderFX : ComputeFloat4, ParticleStructPos4Vel4, Shader
 - `stage` keyword for proper visibility
 - `ShaderBaseStream` provides `streams.InstanceID`
 - Connect to material's Diffuse or Emissive slot
+
+---
+
+## Material Extension vs Custom Draw
+
+The particle system above shows **both approaches**:
+
+### Custom Draw (DrawParticles_DrawFX)
+- Geometry shader creates billboards
+- Full control over vertex generation
+- No built-in lighting
+
+### Material Extension (ColorPerParticle_ShaderFX)
+- Standard instanced mesh rendering
+- `ComputeColor` shader provides per-instance color
+- Works with full PBR materials, shadows, reflections
+
+**For most cases, material extension is simpler:**
+
+```hlsl
+// Material extension approach - just provide per-instance data
+shader ParticleColor_ShaderFX : ComputeColor, ShaderBaseStream
+{
+    StructuredBuffer<float4> Colors;
+
+    override float4 Compute()
+    {
+        return Colors[streams.InstanceID];
+    }
+};
+```
+
+Assign to a material's diffuse slot, render instanced spheres, done. The material system handles lighting automatically.
+
+**Use custom draw when you need:**
+- Non-mesh geometry (billboards, impostors, procedural shapes)
+- Custom vertex generation
+- Non-standard rendering techniques
 
 ---
 

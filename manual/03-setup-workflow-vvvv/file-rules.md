@@ -12,13 +12,7 @@
 ✓ CORRECT
 my-project/
 ├── MyProject.vl
-└── shaders/              ← Exactly "shaders", lowercase
-    └── MyShader.sdsl
-
-✗ WRONG
-my-project/
-├── MyProject.vl
-└── Shaders/              ← Wrong: capital S
+└── shaders/              ← Named "shaders"
     └── MyShader.sdsl
 
 ✗ WRONG
@@ -62,15 +56,6 @@ my-project/
 // File: MyEffect_TextureFX.sdsl
 
 shader MyEffect_TextureFX : FilterBase    // ✓ CORRECT: matches filename
-{
-    // ...
-};
-```
-
-```hlsl
-// File: MyEffect_TextureFX.sdsl
-
-shader MyEffectTextureFX : FilterBase     // ✗ WRONG: missing underscore
 {
     // ...
 };
@@ -129,8 +114,8 @@ Subfolders help organization. All shaders still appear in NodeBrowser with their
 
 **Check:**
 1. Is `shaders/` folder next to your .vl file?
-2. Is folder named exactly `shaders` (lowercase)?
-3. Does filename match shader name exactly?
+2. Is folder named `shaders`?
+3. Does filename match shader name exactly (case-sensitive)?
 4. Does filename have correct suffix?
 5. Did you save the file?
 
@@ -177,10 +162,9 @@ Save as **UTF-8** without BOM. Most editors do this by default. If you see weird
 
 | Rule | Requirement |
 |------|-------------|
-| Folder name | `shaders` (exactly, lowercase) |
+| Folder name | `shaders` |
 | Folder location | Next to .vl document |
-| Filename | Must match shader name |
-| Case | Case-sensitive everywhere |
+| Filename | Must match shader name (case-sensitive) |
 | Extension | `.sdsl` |
 | Suffix | Determines node type |
 

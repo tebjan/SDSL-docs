@@ -1,6 +1,6 @@
 # Composition
 
-> Define a slot. Plug in any shader that fits.
+> Define a slot. Plug in any shader that inherits from the slot type.
 
 ---
 
@@ -15,12 +15,12 @@ In HLSL, you either:
 
 ## The Solution
 
-In SDSL, declare a **composition slot**. Any shader that matches the signature can plug in:
+In SDSL, declare a **composition slot**. Any shader that inherits from the slot type can plug in:
 
 ```hlsl
 shader ParticleShader : ComputeShaderBase
 {
-    compose ComputeColor colorSource;    // Slot: expects something that computes color
+    compose ComputeColor colorSource;    // Slot: expects a ComputeColor
 
     override void Compute()
     {
@@ -30,13 +30,13 @@ shader ParticleShader : ComputeShaderBase
 };
 ```
 
-Now you can plug in:
+Now you can plug in any shader that inherits from `ComputeColor`:
 - `ComputeColorTexture` (samples a texture)
-- `ComputeColorGradient` (interpolates a gradient)  
+- `ComputeColorGradient` (interpolates a gradient)
 - `ComputeColorNoise` (generates noise)
-- Any custom shader that has a `Compute()` returning `float4`
+- Your own `MyCustomColor : ComputeColor`
 
-The parent shader doesn't know or care which one. It just calls `Compute()`.
+This works like **interfaces in C#** — the slot type defines the contract, and any shader inheriting from it can fulfill that contract. The parent shader calls `Compute()` without knowing which implementation is plugged in.
 
 ---
 
@@ -169,6 +169,55 @@ Without `clone`, both would share the same underlying shader state.
 
 ---
 
+## Building Your Own Composition Systems
+
+`ComputeColor` is just one example of a composition interface. You can define your own for any pluggable behavior:
+
+```hlsl
+// Define your interface (no suffix = utility shader)
+shader ParticleProvider
+{
+    abstract float4 GetWorldPosition();
+    abstract float GetParticleSize();
+    abstract float4 GetParticleColor();
+};
+```
+
+```hlsl
+// Implement it
+shader MyParticleProvider : ParticleProvider
+{
+    StructuredBuffer<float4> Positions;
+    float Size = 0.1;
+
+    override float4 GetWorldPosition()
+    {
+        return Positions[streams.InstanceID];
+    }
+
+    override float GetParticleSize() { return Size; }
+    override float4 GetParticleColor() { return float4(1, 1, 1, 1); }
+};
+```
+
+```hlsl
+// Use it via composition
+shader ParticleRenderer : ShaderBase
+{
+    compose ParticleProvider provider;
+
+    override void VSMain()
+    {
+        streams.PositionWS = provider.GetWorldPosition();
+        // ...
+    }
+};
+```
+
+This pattern lets you build shader graphs, material systems, or any pluggable architecture you need. Stride's material system is built entirely on this concept.
+
+---
+
 ## Summary
 
 | Concept | Syntax |
@@ -178,3 +227,4 @@ Without `clone`, both would share the same underlying shader state.
 | Array of compositions | `compose ShaderType name[];` |
 | Iterate array | `foreach (var x in name) { }` |
 | Force separate instances | `clone compose ShaderType name;` |
+| Type requirement | Composed shader must inherit from slot type |

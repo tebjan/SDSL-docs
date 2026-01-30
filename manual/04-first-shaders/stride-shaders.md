@@ -1,8 +1,8 @@
-# Basic Shaders
+# Shaders in Stride
 
-> Writing shaders directly in Stride Game Studio.
+> Writing shaders in Stride Game Studio. You can extend and replace any part of the material system.
 
-In Stride, you write `.sdsl` files and use them through the effect system. No special naming conventions required.
+In Stride, you write `.sdsl` files and use them through the effect system. The material system is built entirely on SDSL composition — you can extend, override, or replace any shader in the pipeline.
 
 ---
 
@@ -65,6 +65,8 @@ shader TexturedMesh : ShaderBase, Transformation, PositionStream4, Texturing
 
 ## Compute Shader
 
+The SDSL shader:
+
 ```hlsl
 shader DataProcessor : ComputeShaderBase
 {
@@ -81,7 +83,7 @@ shader DataProcessor : ComputeShaderBase
 };
 ```
 
-Use with an effect file:
+Effect file (`.sdfx`):
 
 ```csharp
 effect DataProcessorEffect
@@ -89,6 +91,46 @@ effect DataProcessorEffect
     mixin DataProcessor;
 };
 ```
+
+### Dispatching from C#
+
+```csharp
+// In your script or game system
+public class MyComputeProcessor : SyncScript
+{
+    private ComputeEffectShader computeEffect;
+    private Buffer<float> dataBuffer;
+
+    public override void Start()
+    {
+        // Create the compute effect
+        var context = RenderContext.GetShared(Services);
+        computeEffect = new ComputeEffectShader(context)
+        {
+            ShaderSourceName = "DataProcessor",
+            ThreadGroupCounts = new Int3(64, 1, 1)  // Dispatch size
+        };
+
+        // Create GPU buffer
+        dataBuffer = Buffer.New<float>(GraphicsDevice, 1024,
+            BufferFlags.UnorderedAccess | BufferFlags.ShaderResource);
+    }
+
+    public override void Update()
+    {
+        // Set parameters
+        computeEffect.Parameters.Set(DataProcessorKeys.Data, dataBuffer);
+        computeEffect.Parameters.Set(DataProcessorKeys.Count, 1024);
+
+        // Dispatch
+        var renderContext = RenderContext.GetShared(Services);
+        var drawContext = new RenderDrawContext(Services, renderContext, Game.GraphicsContext);
+        computeEffect.Draw(drawContext);
+    }
+}
+```
+
+The `*Keys` class is auto-generated from your shader parameters.
 
 ---
 
@@ -111,6 +153,105 @@ shader PulsingColor : ComputeColor, Global
 ```
 
 This can be assigned to material slots (Diffuse, Emissive, etc.) in Stride Game Studio.
+
+---
+
+## Extending the Material System
+
+Stride's material system is entirely composition-based. Every material property (diffuse, normal, specular, emissive) is a `ComputeColor` slot that you can fill with any shader that inherits from `ComputeColor`.
+
+**You can change anything:**
+
+- Replace how diffuse color is computed
+- Add custom lighting models
+- Modify normal mapping behavior
+- Inject per-instance data into materials
+- Create procedural textures
+- Build shader graphs
+
+**Example: Per-instance color from a buffer**
+
+```hlsl
+shader InstanceColor : ComputeColor, ShaderBaseStream
+{
+    StructuredBuffer<float4> Colors;
+
+    override float4 Compute()
+    {
+        return Colors[streams.InstanceID];
+    }
+};
+```
+
+Assign this to a material's diffuse slot, and each instance gets a unique color from the buffer.
+
+**Example: Animated emissive**
+
+```hlsl
+shader PulseEmissive : ComputeColor, Global
+{
+    [Color]
+    float4 EmissiveColor = float4(1, 0.5, 0, 1);
+    float Speed = 2.0;
+
+    override float4 Compute()
+    {
+        float pulse = sin(Time * Speed) * 0.5 + 0.5;
+        return EmissiveColor * pulse;
+    }
+};
+```
+
+The material editor shows your shader's parameters. No C# code required for simple cases.
+
+### Using Materials from C#
+
+```csharp
+// Set material parameters at runtime
+myMaterial.Passes[0].Parameters.Set(PulseEmissiveKeys.EmissiveColor, new Color4(1, 0.5f, 0, 1));
+myMaterial.Passes[0].Parameters.Set(PulseEmissiveKeys.Speed, 3.0f);
+```
+
+### Creating Materials in Code
+
+```csharp
+// Create a material with your custom shader
+var materialDescriptor = new MaterialDescriptor
+{
+    Attributes =
+    {
+        Diffuse = new MaterialDiffuseMapFeature(new ComputeColor(Color.White)),
+        Emissive = new MaterialEmissiveMapFeature(new ComputeShaderClassColor
+        {
+            MixinReference = "PulseEmissive"
+        })
+    }
+};
+
+var material = Material.New(GraphicsDevice, materialDescriptor);
+```
+
+---
+
+## Material Integration Patterns
+
+### Pattern 1: Simple property shader
+
+Inherit from `ComputeColor`, implement `Compute()`, assign to material slot.
+
+### Pattern 2: Access instance data
+
+Add `ShaderBaseStream` to access `streams.InstanceID`, then read from buffers.
+
+### Pattern 3: Custom lighting
+
+Inherit from material surface shaders to modify lighting calculations.
+
+### Pattern 4: Full custom material
+
+Create effect files (`.sdfx`) that compose multiple shaders with conditional logic.
+
+The key insight: **you only write what's different**. Everything else comes from base shaders.
 
 ---
 

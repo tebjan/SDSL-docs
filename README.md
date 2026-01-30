@@ -1,6 +1,8 @@
 # SDSL: Stop Duplicating Shader Logic
 
-SDSL (Stride Shading Language) adds object-oriented features to HLSL. Inherit vertex shaders, matrices, and texturing from base classes instead of duplicating code across every shader.
+**You only write what's different.** Everything else comes from base shaders.
+
+SDSL (Stride Shading Language) adds object-oriented features to HLSL. Inherit matrices, streams, and rendering setups from base classes. The Stride engine has hundreds of production-tested shaders you can extend with a few lines of code.
 
 ```hlsl
 shader TexturedQuad : ShaderBase, PositionStream4, Transformation, Texturing
@@ -19,39 +21,23 @@ shader TexturedQuad : ShaderBase, PositionStream4, Transformation, Texturing
 };
 ```
 
-Position from `PositionStream4`. Matrices from `Transformation`. UVs from `Texturing`. No boilerplate.
+Position from `PositionStream4`, matrices from `Transformation`, UVs from `Texturing`.
 
 ## **[tebjan.github.io/SDSL-docs](https://tebjan.github.io/SDSL-docs)**
 
 ---
 
-## What You'll Learn
+## Topics
 
-- **Why SDSL** - The boilerplate problem and how inheritance solves it
-- **Core concepts** - Streams, inheritance, composition
-- **Working examples** - TextureFX, DrawFX, ComputeFX, ShaderFX
-- **System design** - Multi-shader systems, particles, pipelines
-- **Platform setup** - vvvv gamma and Stride workflows
-
-## In Production
-
-SDSL is the shader language of the [Stride](https://stride3d.net/) game engine. [vvvv gamma](https://vvvv.org/) uses Stride's rendering and SDSL through deep integration, adding its own base shaders (`VS_PS_Base`, `FilterBase`) and the TextureFX/DrawFX/ComputeFX/ShaderFX node system. [VL.Fuse](https://www.thefuselab.io/) overlays a polished visual workflow that makes GPU development accessible, rapid, and production-ready.
-
-vvvv has powered large-scale media installations since 2002: the Guggenheim Bilbao, immersive exhibitions, multi-machine live events. Its hybrid workflow lets you mix SDSL text shaders, visual shader graphs, visual programming nodes, and C# code in the same project, all hot-reloading as you work.
-
-### New SDSL Compiler
-
-[stride3d/SDSL](https://github.com/stride3d/SDSL) is a new compiler for the same language:
-
-- Pure C#, targets SPIR-V directly
-- Faster compilation
-- Active development
-
----
+- The shader permutation problem and how SDSL solves it
+- Streams, inheritance, composition
+- TextureFX, DrawFX, ComputeFX, ShaderFX (vvvv)
+- Multi-shader systems, particles, pipelines
+- vvvv gamma and Stride workflows
 
 ## Origins
 
-SDSL implements ideas from:
+SDSL implements ideas from this paper:
 
 > **[Spark: Modular, Composable Shaders for Graphics Hardware](https://graphics.stanford.edu/papers/spark/spark_preprint.pdf)**
 > Tim Foley & Pat Hanrahan, SIGGRAPH 2011
@@ -65,6 +51,34 @@ SDSL builds on the [original Spark research](https://github.com/spark-shading-la
 **Alexandre Mutel** ([xoofx](https://github.com/xoofx)) created SharpDX and designed Unity's Burst compiler. Microsoft MVP. Co-created Xenko at Silicon Studio Tokyo.
 
 Built at Silicon Studio in Tokyo (2011-2016), now part of [Stride](https://stride3d.net/) (MIT license, .NET Foundation).
+
+### New SDSL Compiler
+
+[stride3d/SDSL](https://github.com/stride3d/SDSL) is a new compiler for the same language:
+
+- Pure C#, targets SPIR-V directly
+- Faster compilation
+- Active development
+
+---
+
+## In Production
+
+<a href="https://stride3d.net/"><img src="media/stride-logo.png" alt="Stride" style="height:80px !important;width:auto !important;"></a>
+
+[Stride](https://stride3d.net/) is a production game engine using SDSL for all shaders. Games, simulations, and interactive applications ship with SDSL shaders.
+
+<a href="https://vvvv.org/"><img src="media/vvvv-logo.svg" alt="vvvv" style="height:80px !important;width:auto !important;"></a>
+
+[vvvv gamma](https://vvvv.org/) uses Stride's rendering and SDSL through deep integration, adding its own base shaders (`VS_PS_Base`, `FilterBase`) and the TextureFX/DrawFX/ComputeFX/ShaderFX node system. vvvv has powered large-scale media installations since 2002: the Guggenheim Bilbao, immersive exhibitions, multi-machine live events. Used by designers, researchers, and graphics programmers who need rapid prototyping with production-quality output.
+
+<a href="https://www.thefuselab.io/"><img src="media/fuse-logo.png" alt="VL.Fuse" style="height:80px !important;width:auto !important;"></a>
+
+[VL.Fuse](https://www.thefuselab.io/) overlays a powerful library with dozens of advanced rendering techniques (SDF, 3D fluid simulation, compute utilities) and an even more fine-grained shader node graph.
+
+<img src="media/fuse-sdf-screenshot.png" alt="VL.Fuse visual shader graph" width="600">
+
+The hybrid workflow lets you mix SDSL text shaders, visual shader graphs, visual programming nodes, and C# code in the same project, all hot-reloading as you work.
 
 ---
 
@@ -100,7 +114,7 @@ To build the documentation locally:
 
 ## Contributing
 
-Contributions welcome. Edit the markdown files in `articles/` and submit a pull request.
+Contributions welcome. Edit the markdown files in `manual/` and submit a pull request.
 
 ## License
 

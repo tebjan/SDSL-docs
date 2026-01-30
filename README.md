@@ -2,7 +2,7 @@
 
 **You only write what's different.** Everything else comes from base shaders.
 
-SDSL (Stride Shading Language) adds object-oriented features to HLSL. Inherit matrices, streams, and rendering setups from base classes. The Stride engine has hundreds of production-tested shaders you can extend with a few lines of code.
+SDSL (Stride Shading Language) adds object-oriented features to HLSL. Inherit from multiple base shaders, like C# interfaces with default implementations. The Stride engine has hundreds of production-tested shaders you can extend with a few lines of code.
 
 ```hlsl
 shader TexturedQuad : ShaderBase, PositionStream4, Transformation, Texturing

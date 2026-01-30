@@ -2,7 +2,7 @@
 
 **You only write what's different.** Everything else comes from base shaders.
 
-SDSL (Stride Shading Language) adds object-oriented features to HLSL. Inherit matrices, streams, and rendering setups from base classes. The Stride engine has hundreds of production-tested shaders you can extend with a few lines of code.
+SDSL (Stride Shading Language) adds object-oriented features to HLSL. Inherit from multiple base shaders, like C# interfaces with default implementations. The Stride engine has hundreds of production-tested shaders you can extend with a few lines of code.
 
 ```hlsl
 shader TexturedQuad : ShaderBase, PositionStream4, Transformation, Texturing
@@ -21,7 +21,7 @@ shader TexturedQuad : ShaderBase, PositionStream4, Transformation, Texturing
 };
 ```
 
-Position from `PositionStream4`. Matrices from `Transformation`. UVs and sampler from `Texturing`. No boilerplate.
+Position from `PositionStream4`, matrices from `Transformation`, UVs from `Texturing`.
 
 ---
 
@@ -29,9 +29,9 @@ Position from `PositionStream4`. Matrices from `Transformation`. UVs and sampler
 
 - The shader permutation problem and how SDSL solves it
 - Streams, inheritance, composition
-- Draw shaders, compute shaders, material extensions
+- TextureFX, DrawFX, ComputeFX, ShaderFX (vvvv)
 - Multi-shader systems, particles, pipelines
-- Stride and vvvv workflows
+- vvvv gamma and Stride workflows
 
 **[Get Started](manual/00-setup/tools.md)**
 
@@ -39,18 +39,28 @@ Position from `PositionStream4`. Matrices from `Transformation`. UVs and sampler
 
 ## Origins
 
-SDSL implements ideas from:
+SDSL implements ideas from this paper:
 
 > **[Spark: Modular, Composable Shaders for Graphics Hardware](https://graphics.stanford.edu/papers/spark/spark_preprint.pdf)**
 > Tim Foley & Pat Hanrahan, SIGGRAPH 2011
 
-**Virgile Bello** ([xen2](https://github.com/xen2)) leads Stride development. Previously: Silicon Studio Tokyo (Lead Architect), NVIDIA (OpenGL team).
+SDSL builds on the [original Spark research](https://github.com/spark-shading-language/spark).
 
-**Alexandre Mutel** ([xoofx](https://github.com/xoofx)) created SharpDX and designed Unity's Burst compiler. Microsoft MVP.
+### Developers
+
+**Virgile Bello** ([xen2](https://github.com/xen2)) leads Stride development. Previously: Silicon Studio Tokyo (Lead Architect), NVIDIA (OpenGL team), Woven by Toyota (vehicle simulator).
+
+**Alexandre Mutel** ([xoofx](https://github.com/xoofx)) created SharpDX and designed Unity's Burst compiler. Microsoft MVP. Co-created Xenko at Silicon Studio Tokyo.
 
 Built at Silicon Studio in Tokyo (2011-2016), now part of [Stride](https://stride3d.net/) (MIT license, .NET Foundation).
 
-[New SDSL Compiler](https://github.com/stride3d/SDSL) - Pure C#, targets SPIR-V directly.
+### New SDSL Compiler
+
+[stride3d/SDSL](https://github.com/stride3d/SDSL) is a new compiler for the same language:
+
+- Pure C#, targets SPIR-V directly
+- Faster compilation
+- Active development
 
 ---
 
@@ -76,6 +86,9 @@ The hybrid workflow lets you mix SDSL text shaders, visual shader graphs, visual
 
 ## Resources
 
-- [Stride Shader Documentation](https://doc.stride3d.net/latest/en/manual/graphics/effects-and-shaders/shading-language/)
-- [Shader Explorer](https://github.com/tebjan/Stride.ShaderExplorer) - Browse Stride's shader hierarchy
+- [Spark Paper](https://graphics.stanford.edu/papers/spark/spark_preprint.pdf) (SIGGRAPH 2011)
+- [New SDSL Compiler](https://github.com/stride3d/SDSL)
+- [Stride Docs](https://doc.stride3d.net/latest/en/manual/graphics/effects-and-shaders/shading-language/)
+- [Shader Explorer](https://github.com/tebjan/Stride.ShaderExplorer)
+- [vvvv](https://vvvv.org/)
 - [vvvv Gray Book](https://thegraybook.vvvv.org/reference/libraries/3d/shaders.html)

@@ -108,36 +108,6 @@ Subfolders help organization. All shaders still appear in NodeBrowser with their
 
 ---
 
-## Common Mistakes
-
-### Mistake: Shader doesn't appear in NodeBrowser
-
-**Check:**
-1. Is `shaders/` folder next to your .vl file?
-2. Is folder named `shaders`?
-3. Does filename match shader name exactly (case-sensitive)?
-4. Does filename have correct suffix?
-5. Did you save the file?
-
-### Mistake: "Mixin not found" error
-
-**Cause:** File not found or name mismatch.
-
-**Check:**
-1. Is the inherited shader name spelled correctly?
-2. Is the inherited shader's file in the shaders/ folder?
-3. For vvvv base shaders (FilterBase, etc.), they're built-in — no file needed.
-
-### Mistake: Changed shader, but old behavior persists
-
-**Try:**
-1. Save the file again
-2. Delete the node, re-create from NodeBrowser
-3. Check for cached files in `obj/` folder (delete them)
-4. Restart vvvv
-
----
-
 ## File Extension
 
 Always use `.sdsl`:

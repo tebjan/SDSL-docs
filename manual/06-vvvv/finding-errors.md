@@ -1,10 +1,30 @@
-# Finding Errors [vvvv]
+# Errors [vvvv]
 
 > The node goes red. Now what?
 
 ---
 
-## Where Errors Actually Show
+## With VS Code Extension (Recommended)
+
+The SDSL extension shows errors in real-time as you type:
+
+| Issue | Severity |
+|-------|----------|
+| `'ColorTarget' is not defined` | Error |
+| `Method 'Compute' is marked as override but no base method found` | Error |
+| `Redundant: already inherited via 'MaterialShaderBase'` | Hint (faded) |
+
+**One-click fixes:** Hover an undefined variable to see which shaders provide it, then click to add.
+
+This is faster than the save-and-check workflow below.
+
+See [VS Code Extension](../03-discovery/vscode-extension.md) for full documentation.
+
+---
+
+## Console-Based (Without Extension)
+
+### Where Errors Actually Show
 
 **Not on the node.** The node just turns red or pink. No message.
 
@@ -39,11 +59,6 @@ Line numbers are approximate. SDSL compiles through multiple stages, so the line
 ### "Mixin not found: SomeShader"
 
 **Cause:** Inherited shader doesn't exist.
-
-**Check:**
-1. Spelling correct? (case-sensitive)
-2. File exists in shaders/ folder?
-3. Shader name in file matches filename?
 
 ```hlsl
 // ERROR: "Mixin not found: filterbase"
@@ -204,7 +219,7 @@ For complex issues:
 2. Capture a frame
 3. Inspect actual GPU state
 
-See [Tools Setup](../00-setup/tools.md) for RenderDoc configuration.
+See [Tools Setup](../04-setup/tools.md) for RenderDoc configuration.
 
 ---
 
@@ -212,7 +227,7 @@ See [Tools Setup](../00-setup/tools.md) for RenderDoc configuration.
 
 | Error | Likely Cause | Fix |
 |-------|--------------|-----|
-| Mixin not found | Wrong name or file | Check spelling, file location |
+| Mixin not found | Wrong name or file | Case-sensitive name match |
 | Stream not found | Missing inheritance | Add correct base shader |
 | Method already defined | Missing override | Add `override` keyword |
 | Variable not found | Missing inheritance | Add `Transformation`, etc. |

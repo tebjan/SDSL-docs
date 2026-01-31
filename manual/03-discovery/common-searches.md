@@ -146,14 +146,3 @@ shader My_ShaderFX : ComputeColor, Texturing
 ```hlsl
 shader My_TextureFX : FilterBase
 ```
-
----
-
-## Can't Find It?
-
-1. Open **Shader Explorer**
-2. Search for keywords (e.g., "camera", "normal", "instance")
-3. Click through results
-4. Read the source code
-
-The answer is always in the code.

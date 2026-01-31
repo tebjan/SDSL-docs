@@ -16,8 +16,6 @@ The runtime that compiles and executes your shaders.
 | **Version** | Latest stable (2024.6+) |
 | **License** | Free for non-commercial |
 
-After install, verify it runs. Create a new document. That's your test bed.
-
 ---
 
 ### Stride Shader Explorer
@@ -34,40 +32,32 @@ The explorer shows you:
 - What each shader provides (streams, methods, variables)
 - The inheritance tree
 
-See [Shader Explorer](../05-discovery/shader-explorer.md) for details.
+See [Shader Explorer](../03-discovery/shader-explorer.md) for details.
 
 ---
 
 ## Code Editor (Choose One)
 
-### Option A: Visual Studio Code (Recommended to Start)
+### Option A: VS Code + SDSL Extension (Recommended)
 
-Fast, lightweight, good enough for most work.
+Full IntelliSense for SDSL shaders.
 
 | | |
 |---|---|
 | **Download** | [code.visualstudio.com](https://code.visualstudio.com) |
-| **Extension** | "Shader languages support for VS Code" by slevesque |
-
-**Setup steps:**
-1. Install VS Code
-2. Open Extensions (Ctrl+Shift+X)
-3. Search "shader languages support"
-4. Install the slevesque extension
-5. Associate .sdsl files with HLSL:
-   - Open any .sdsl file
-   - Click language mode in bottom-right (shows "Plain Text")
-   - Select "Configure File Association for '.sdsl'"
-   - Choose "HLSL"
+| **Extension** | [Stride SDSL Shader Tools](https://marketplace.visualstudio.com/items?itemName=tebjan.sdsl) |
+| **Requires** | .NET 8 Runtime (auto-installed) |
 
 **What you get:**
-- Syntax highlighting
-- Basic brace matching
 
-**What you DON'T get:**
-- Error checking (you won't see errors until vvvv compiles)
-- Autocomplete
-- Go to definition
+- **Smart completions** — After `:` only base shaders, after `streams.` all available streams
+- **Go to definition** — F12/Ctrl+Click on shaders, variables, methods (even external Stride shaders)
+- **Rich hover** — Type info, qualifiers, inheritance origin, override chains
+- **Real-time errors** — Problems appear as you type, not after save
+- **One-click fixes** — Undefined variable? Hover shows which shader provides it, click to add
+- **Sidebar panels** — Inheritance tree, streams, variables, methods for current shader
+
+See [VS Code Extension](../03-discovery/vscode-extension.md) for full documentation.
 
 ---
 
@@ -81,13 +71,6 @@ Heavier, but gives you actual error feedback while typing.
 | **Edition** | Community (free) is fine |
 | **Extension** | Stride extension from VS Marketplace |
 
-**Setup steps:**
-1. Install Visual Studio 2022
-2. During install, select ".NET desktop development" workload
-3. After install: Extensions → Manage Extensions
-4. Search "Stride" → Install the Stride extension
-5. Restart Visual Studio
-
 **What you get:**
 - Error squiggles as you type
 - Autocomplete for HLSL intrinsics
@@ -100,24 +83,17 @@ Heavier, but gives you actual error feedback while typing.
 
 ## Editor Comparison
 
-| Feature | VS Code | Visual Studio |
-|---------|---------|---------------|
+| Feature | VS Code + SDSL | Visual Studio |
+|---------|----------------|---------------|
 | Syntax highlighting | ✅ | ✅ |
-| Error squiggles | ❌ | ✅ |
-| Autocomplete | ❌ | ✅ |
-| Go to definition | ❌ | ✅ (partial) |
+| Real-time errors | ✅ | ✅ |
+| Completions | ✅ SDSL-aware | ✅ HLSL only |
+| Go to definition | ✅ Full (even external) | ✅ Partial |
+| One-click add base shader | ✅ | ❌ |
+| Inheritance browser | ✅ Sidebar panels | ❌ |
 | Startup time | Instant | ~5 seconds |
 
-**Recommendation:** 
-
-Start with **VS Code** for the fast iteration cycle. You'll save, see errors in vvvv's console, fix, repeat. It's annoying but workable.
-
-Switch to **Visual Studio** when:
-- You're debugging a complex shader
-- Error messages in vvvv aren't helpful enough
-- You want autocomplete for HLSL functions
-
-Many people use both: VS Code for quick edits, Visual Studio for debugging sessions.
+**Recommendation:** Use **VS Code + SDSL extension**. It understands SDSL inheritance, not just HLSL syntax.
 
 ---
 
@@ -150,29 +126,3 @@ my-project/
 ```
 
 The `shaders` folder name is **not optional**. vvvv looks specifically for this folder name next to your .vl document.
-
----
-
-## Quick Verification
-
-1. Create a folder `test-project`
-2. Save an empty vvvv document as `test-project/Test.vl`
-3. Create `test-project/shaders/` folder
-4. Create `test-project/shaders/Red_TextureFX.sdsl`:
-
-```hlsl
-shader Red_TextureFX : FilterBase
-{
-    float4 Filter(float4 tex0col)
-    {
-        return float4(1, 0, 0, 1);
-    }
-};
-```
-
-5. In vvvv, open NodeBrowser (double-click canvas)
-6. Search "Red"
-7. You should see "Red [TextureFX]"
-
-If the node appears → your setup works.
-If not → check file location, filename matches shader name.

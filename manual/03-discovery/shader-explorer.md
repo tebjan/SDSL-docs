@@ -22,8 +22,6 @@ Instead of guessing which shader to inherit, you search for what you need.
 1. Download from [github.com/tebjan/Stride.ShaderExplorer/releases](https://github.com/tebjan/Stride.ShaderExplorer/releases)
 2. Extract and run the exe
 
-Pin it to your taskbar. You'll use it constantly.
-
 ---
 
 ## Without Stride Installed
@@ -136,15 +134,3 @@ The code panel shows:
 | Pixel output | `ColorTarget` | `ShaderBaseStream` |
 | Sampler | `Sampler` | `Texturing` |
 | PI and math | `PI` | `ShaderUtils` (vvvv) |
-
----
-
-## Tips
-
-**Can't find something?** Try shorter search terms. "World" finds more than "WorldViewProjection".
-
-**See the full hierarchy?** Click on a base shader and trace up the inheritance chain.
-
-**Copy code?** Select and copy directly from the code panel.
-
-**Multiple directories?** You can add as many shader directories as you need. Remove them by clicking the X next to the path.

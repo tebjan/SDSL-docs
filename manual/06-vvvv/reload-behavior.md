@@ -91,63 +91,13 @@ Failure at any step = no update.
 
 ---
 
-## Best Practices
-
-### Start simple, add complexity
-
-```hlsl
-// First, verify the file works at all:
-shader Test_TextureFX : FilterBase
-{
-    float4 Filter(float4 tex0col)
-    {
-        return float4(1, 0, 0, 1);  // Just output red
-    }
-};
-```
-
-If red appears → file setup is correct. Now add your real code.
-
----
-
-### One change at a time
-
-Don't change inheritance AND add parameters AND write new logic all at once. Change one thing, save, verify.
-
----
-
-### Keep vvvv console visible
-
-Quad menu → Logging → Show Console
-
-Errors appear here, not on the node. Keep it open.
-
----
-
-### When in doubt, restart
+## When in Doubt, Restart
 
 If behavior doesn't match code after multiple save attempts:
 1. Save your .vl document
 2. Close vvvv completely
 3. Delete `obj/` folder (if exists)
 4. Reopen vvvv and your document
-
-Takes 10 seconds. Saves 10 minutes of confusion.
-
----
-
-## The "Recreate Node" Dance
-
-Often the quickest fix:
-
-1. Note what the node is connected to
-2. Delete the node
-3. Open NodeBrowser
-4. Find your shader (search by name)
-5. Create new node
-6. Reconnect
-
-This forces vvvv to reload the shader from scratch.
 
 ---
 

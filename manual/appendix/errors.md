@@ -109,16 +109,6 @@ streams.ColorTarget = color * Brightness;  // Pin appears
 
 ---
 
-### Node is red / no output
-
-**Check these:**
-1. All required inputs connected?
-2. Buffer/texture inputs valid (not null)?
-3. Instance/dispatch count > 0?
-4. Shader compiled? (Look at vvvv console for errors)
-
----
-
 ### All instances at same position
 
 **Cause:** `IsStructuredBuffer` not enabled on DynamicBuffer.
@@ -214,13 +204,3 @@ float3 worldNormal = normalize(mul(streams.Normal, (float3x3)World));
 **Cause:** GPU runs asynchronously. ReadBack gets previous frame's data.
 
 **This is expected.** Design around it or use double buffering.
-
----
-
-## Tips
-
-- **Check vvvv console** — actual error messages appear there
-- **Save often** — shader changes require file save to recompile
-- **Start simple** — get basic output working before adding complexity
-- **Use Shader Explorer** — verify inheritance provides what you need
-- **Output debug colors** — magenta for "I got here", red for errors

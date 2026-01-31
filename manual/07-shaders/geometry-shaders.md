@@ -274,5 +274,5 @@ Keep `maxvertexcount` as small as possible—larger values reduce parallelism.
 
 ## Next Steps
 
-- [Shader Systems](../06-system-design/shader-systems.md) — Complete particle system with GS
+- [Shader Systems](../08-system-design/shader-systems.md) — Complete particle system with GS
 - [ShaderFX](shaderfx.md) — Composition for material integration

@@ -33,7 +33,7 @@ Position from `PositionStream4`, matrices from `Transformation`, UVs from `Textu
 - Multi-shader systems, particles, pipelines
 - vvvv gamma and Stride workflows
 
-**[Get Started](manual/00-setup/tools.md)**
+**[Get Started](manual/04-setup/tools.md)**
 
 ---
 

@@ -155,7 +155,7 @@ Use `stage` for:
 
 How do you know what shaders exist and what they provide?
 
-**Use Shader Explorer.** Search for what you need, see which shader has it, inherit that shader. See the [Shader Explorer](../05-discovery/shader-explorer.md) section.
+**Use Shader Explorer.** Search for what you need, see which shader has it, inherit that shader. See the [Shader Explorer](../03-discovery/shader-explorer.md) section.
 
 ### Starting Points by Use Case
 

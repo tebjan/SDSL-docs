@@ -47,36 +47,54 @@ You need a way to **explore**, not just read.
 
 ---
 
-## The Solution: Shader Explorer
+## The Solution: Two Tools
 
-The Stride Shader Explorer is a tool that:
+### In-Editor: VS Code Extension
 
-- Parses all .sdsl files
-- Shows the inheritance hierarchy
-- Lets you search by name
-- Displays source code
-- Shows what each shader provides
+The SDSL extension brings discovery into your editor:
 
-**This is how you discover what's available.**
+- **Sidebar panels** — Browse inheritance, streams, variables, methods
+- **Hover info** — See what any shader provides
+- **One-click fixes** — Use undefined variable → hover shows which shader has it → click to add
+- **Completions** — `streams.` shows all available streams from your inheritance
 
-Not by memorizing documentation. By exploring the actual shaders.
+This is your primary tool while coding. See [VS Code Extension](vscode-extension.md).
+
+### Deep Exploration: Shader Explorer
+
+For understanding full hierarchies before you start:
+
+- Complete inheritance tree visualization
+- Search across all shaders
+- View full source code
+- Explore custom project shaders
+
+See [Shader Explorer](shader-explorer.md).
 
 ---
 
 ## The Workflow
 
-1. **Have a need:** "I need to access the camera position"
+**With VS Code extension:**
+
+1. Use a variable like `Eye`
+2. Hover shows: "Defined in: Transformation"
+3. Click to add `Transformation` to inheritance
+4. Done
+
+**With Shader Explorer:**
+
+1. **Have a need:** "I need the camera position"
 2. **Search:** Open Shader Explorer, search "camera" or "eye"
-3. **Find:** `Transformation` has `Eye` (float3 camera position)
+3. **Find:** `Transformation` has `Eye` (float3)
 4. **Inherit:** Add `Transformation` to your shader
-5. **Use:** Access `Eye` in your code
 
 ```hlsl
 shader MyShader_DrawFX : VS_PS_Base
 {
     override stage void PSMain()
     {
-        float3 cameraPos = Eye;  // Available because of Transformation
+        float3 cameraPos = Eye;  // From Transformation
         // ...
     }
 };
@@ -88,10 +106,8 @@ shader MyShader_DrawFX : VS_PS_Base
 
 In the next pages:
 
-1. **[Shader Explorer](shader-explorer.md)** — How to set it up and use it
-2. **[Common Searches](common-searches.md)** — Quick answers to frequent questions
-3. **[The Hierarchy](../02-core-concepts/inheritance.md)** — Understanding what inherits what
+1. **[VS Code Extension](vscode-extension.md)** — In-editor discovery and fixes
+2. **[Shader Explorer](shader-explorer.md)** — Browse the full hierarchy
+3. **[Common Searches](common-searches.md)** — Quick answers to frequent questions
 
-Once you internalize this workflow, you'll never feel lost in SDSL again.
-
-→ Next: [Shader Explorer](shader-explorer.md)
+→ Next: [VS Code Extension](vscode-extension.md)

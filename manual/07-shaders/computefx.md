@@ -254,12 +254,3 @@ override void Compute()
     Output[pos] = ProcessColor(color);
 }
 ```
-
----
-
-## Tips
-
-- Start with `[numthreads(64, 1, 1)]` for 1D, `[numthreads(8, 8, 1)]` for 2D
-- Always bounds-check with `if (index >= Count) return;`
-- Use `StructuredBuffer` for input, `RWStructuredBuffer` for output
-- Test with small data first, then scale up

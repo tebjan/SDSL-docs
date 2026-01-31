@@ -1,7 +1,4 @@
 items:
-  - name: Setup
-    href: 00-setup/tools.md
-
   - name: Why SDSL
     href: 01-why-sdsl/the-problem.md
     items:
@@ -26,64 +23,69 @@ items:
       - name: Keywords
         href: 02-core-concepts/keywords.md
 
-  - name: vvvv
-    href: 03-setup-workflow-vvvv/file-rules.md
-    items:
-      - name: File Rules
-        href: 03-setup-workflow-vvvv/file-rules.md
-      - name: Reload Behavior
-        href: 03-setup-workflow-vvvv/reload-behavior.md
-      - name: Finding Errors
-        href: 03-setup-workflow-vvvv/finding-errors.md
-      - name: TextureFX
-        href: 04-first-shaders/texturefx.md
-      - name: DrawFX
-        href: 04-first-shaders/drawfx.md
-      - name: ComputeFX
-        href: 04-first-shaders/computefx.md
-      - name: ShaderFX
-        href: 04-first-shaders/shaderfx.md
-
-  - name: Stride
-    href: 03-setup-workflow-stride/overview.md
+  - name: Discovery
+    href: 03-discovery/the-problem.md
     items:
       - name: Overview
-        href: 03-setup-workflow-stride/overview.md
+        href: 03-discovery/the-problem.md
+      - name: VS Code Extension
+        href: 03-discovery/vscode-extension.md
+      - name: Shader Explorer
+        href: 03-discovery/shader-explorer.md
+      - name: Common Searches
+        href: 03-discovery/common-searches.md
+
+  - name: Setup
+    href: 04-setup/tools.md
+
+  - name: Stride
+    href: 05-stride/overview.md
+    items:
+      - name: Overview
+        href: 05-stride/overview.md
       - name: Basic Shaders
-        href: 04-first-shaders/stride-shaders.md
+        href: 07-shaders/stride-shaders.md
+
+  - name: vvvv
+    href: 06-vvvv/file-rules.md
+    items:
+      - name: File Rules
+        href: 06-vvvv/file-rules.md
+      - name: Reload Behavior
+        href: 06-vvvv/reload-behavior.md
+      - name: Errors
+        href: 06-vvvv/finding-errors.md
+      - name: TextureFX
+        href: 07-shaders/texturefx.md
+      - name: DrawFX
+        href: 07-shaders/drawfx.md
+      - name: ComputeFX
+        href: 07-shaders/computefx.md
+      - name: ShaderFX
+        href: 07-shaders/shaderfx.md
 
   - name: Geometry Shaders
-    href: 04-first-shaders/geometry-shaders.md
-
-  - name: Discovery
-    href: 05-discovery/the-problem.md
-    items:
-      - name: The Problem
-        href: 05-discovery/the-problem.md
-      - name: Shader Explorer
-        href: 05-discovery/shader-explorer.md
-      - name: Common Searches
-        href: 05-discovery/common-searches.md
+    href: 07-shaders/geometry-shaders.md
 
   - name: System Design
-    href: 06-system-design/shader-systems.md
+    href: 08-system-design/shader-systems.md
     items:
       - name: Shader Systems
-        href: 06-system-design/shader-systems.md
+        href: 08-system-design/shader-systems.md
       - name: When to Split
-        href: 06-system-design/when-to-split.md
+        href: 08-system-design/when-to-split.md
       - name: Shared Base
-        href: 06-system-design/shared-base.md
+        href: 08-system-design/shared-base.md
       - name: Multi-Pass
-        href: 06-system-design/multi-pass.md
+        href: 08-system-design/multi-pass.md
       - name: File Organization
-        href: 06-system-design/file-organization.md
+        href: 08-system-design/file-organization.md
 
   - name: Patterns
-    href: 07-patterns/instancing.md
+    href: 09-patterns/instancing.md
 
   - name: Porting
-    href: 08-porting/hlsl-to-sdsl.md
+    href: 10-porting/hlsl-to-sdsl.md
 
   - name: Appendix
     href: appendix/cheatsheet.md

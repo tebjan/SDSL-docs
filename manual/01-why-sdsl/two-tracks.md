@@ -182,6 +182,6 @@ If there's no tag, the content applies to both.
 
 Ready to start?
 
-1. **[Part 0: Setup](../00-setup/tools.md)** — Install the tools
-2. **[Part 2: Setup & Workflow](../03-setup-workflow-vvvv/file-rules.md)** — Critical workflow knowledge
-3. **[Part 3: Your First Shaders](../04-first-shaders/texturefx.md)** — Working examples
+1. **[Part 0: Setup](../04-setup/tools.md)** — Install the tools
+2. **[Part 2: Setup & Workflow](../06-vvvv/file-rules.md)** — Critical workflow knowledge
+3. **[Part 3: Your First Shaders](../07-shaders/texturefx.md)** — Working examples

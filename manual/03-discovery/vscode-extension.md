@@ -9,7 +9,7 @@
 1. Open VS Code
 2. Extensions (Ctrl+Shift+X)
 3. Search "SDSL"
-4. Install [Stride SDSL Shader Tools](https://marketplace.visualstudio.com/items?itemName=tebjan.sdsl)
+4. Install [Stride SDSL Shader Tools](https://marketplace.visualstudio.com/items?itemName=stride.sdsl)
 
 Requires .NET 8 Runtime (auto-installed).
 
@@ -40,7 +40,7 @@ Plus 100+ HLSL intrinsics with signatures.
 - Method calls → Jump to definition in inheritance chain
 - Variables → Jump to declaration
 
-External shaders (Stride, vvvv) open read-only.
+External shaders (Stride, vvvv) open to see full code (read-only).
 
 ---
 
@@ -65,8 +65,8 @@ Errors and warnings as you type:
 |-------|----------|
 | `'ColorTarget' is not defined` | Error |
 | `Method 'Compute' is marked as override but no base method found` | Error |
-| `Base shader 'ShaderBase' not found in workspace` | Warning |
-| `Redundant: already inherited via 'MaterialShaderBase'` | Hint (faded) |
+| `Base shader 'ShaderBase' not found in scope` | Warning |
+| `Redundant base shaders: already inherited via 'MaterialShaderBase'` | Hint (faded) |
 
 ---
 
@@ -86,15 +86,16 @@ Redundant base shaders show a **Remove** link.
 
 ---
 
-## Sidebar Panels
+## Sidebar Panel
 
 Four panels in the **Stride Shaders** activity bar:
 
 | Panel | Shows |
 |-------|-------|
-| **Inheritance** | Current shader + all base shaders (click to open) |
+| **Inheritance** | Current shader + all base shaders |
+| **Compositions** | All `compositions` from inheritance chain |
 | **Streams** | All `stream` variables from inheritance chain |
-| **Variables** | `stage`, `compose`, and regular variables |
+| **Variables** | `stage` and regular variables |
 | **Methods** | All methods including inherited |
 
 Each item shows its source shader. Click to jump to definition.
@@ -141,3 +142,33 @@ Add custom paths in settings:
 | Browse all available shaders | Either |
 
 The extension is for in-editor work. Shader Explorer is for broader exploration before you start.
+
+---
+
+## Editor Alternatives
+
+### Visual Studio 2022
+
+Heavier IDE with HLSL support (not SDSL-aware).
+
+| | |
+|---|---|
+| **Download** | [visualstudio.microsoft.com](https://visualstudio.microsoft.com) |
+| **Edition** | Community (free) |
+| **Extension** | Stride extension from VS Marketplace |
+
+Gets you error squiggles and HLSL autocomplete, but no SDSL inheritance awareness.
+
+### Comparison
+
+| Feature | VS Code + SDSL | Visual Studio |
+|---------|----------------|---------------|
+| Syntax highlighting | Yes | Yes |
+| Real-time errors | Yes | Yes |
+| Completions | SDSL-aware | HLSL only |
+| Go to definition | Full (even external) | Partial |
+| One-click add base shader | Yes | No |
+| Inheritance browser | Sidebar panels | No |
+| Startup time | Instant | ~5 seconds |
+
+**Recommendation:** VS Code + SDSL extension understands SDSL inheritance, not just HLSL syntax.
